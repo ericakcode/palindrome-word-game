@@ -4,9 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <title>Palindrome Word Checker</title>
   </head>
   <body>
+    <h1>Palindrome Word Checker</h1>
+    <div class="main-container">
+      <div class="instructions-container">
+        <i class="fa-solid fa-circle-info" style="color: #557eb4"></i>
+        <h3>How to use</h3>
+        <p class="instructions">
+          A palindrome is a word that remains unchanged when its letters are
+          reversed. Enter any word in the input field below and click "Check" to
+          see if it reads the same forwards and backwards.
+        </p>
+      </div>
+      <form class="form">
+        <label for="text">Enter a word</label>
+        <input type="text" placeholder="e.g., level, madam, radar" id="text" />
+        <button id="checkBtn">
+          <i class="fa-solid fa-magnifying-glass" style="color: #ffffff"></i
+          >Check Palindrome
+        </button>
+      </form>
+      <h2>Try These Popular Palindromes!</h2>
+      <div class="example-palindromes">
+        racecar<button class="tryBtn">Try it</button>
+      </div>
+      <div class="example-palindromes">
+        level<button class="tryBtn">Try it</button>
+      </div>
+      <div class="example-palindromes">
+        dad<button class="tryBtn">Try it</button>
+      </div>
+      <div class="example-palindromes">
+        madam<button class="tryBtn">Try it</button>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
