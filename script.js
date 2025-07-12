@@ -55,10 +55,11 @@ tryBtn.forEach((button) => {
   button.addEventListener("click", (e) => {
     const data = e.target.closest("div");
     const id = data.dataset.id;
-    console.log(data.innerText);
-    console.log(data, id);
+    const textOnly = data.querySelector(".word").innerText;
 
     if (id) {
+      wordInput.value = textOnly;
+      wordInput.dispatchEvent(new Event("input"));
     }
   });
 });
