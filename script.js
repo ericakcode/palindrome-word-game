@@ -14,19 +14,26 @@ checkBtn.addEventListener("click", () => {
   let reversed = wordModified.split("").reverse().join("");
 
   if (wordModified === reversed) {
-    return (result.innerHTML = `
+    result.innerHTML = `
     <p>Yes, <span class="word">'${wordModified}'</span> is a palindrome!</p>
-    `);
+    `;
   } else {
-    return (result.innerHTML = `
+    result.innerHTML = `
     <p>No, <span class="word">'${wordModified}'</span> is not a palindrome!</p>
-    `);
+    `;
   }
-
   wordInput.value = "";
 });
 
-wordInput.addEventListener("keyup", () => {
+// ENTER key
+
+wordInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && !checkBtn.disabled) {
+    checkBtn.click();
+  }
+});
+
+wordInput.addEventListener("input", () => {
   const word = wordInput.value;
   wordModified = word.replace(/[^A-Za-z0-9]/gi, "");
 
