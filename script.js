@@ -3,6 +3,7 @@ const wordInput = document.getElementById("text");
 const tryBtn = document.querySelector(".tryBtn");
 const form = document.querySelector(".form");
 const result = document.querySelector(".result");
+let wordModified;
 
 // Form prevent default
 form.addEventListener("click", (e) => {
@@ -10,23 +11,33 @@ form.addEventListener("click", (e) => {
 });
 
 checkBtn.addEventListener("click", () => {
-  const word = wordInput.value;
-  const wordModified = word.replace(/[^A-Za-z0-9]/g, "");
-  const reversed = wordModified.split("").reverse().join("");
+  let reversed = wordModified.split("").reverse().join("");
 
-  if (wordModified) {
-    if (word === reversed) {
-      result.innerHTML = `
-    <p>Yes, <span class="word">'${word}'</span> is a palindrome!</p>
-    `;
-    } else {
-      result.innerHTML = `
-    <p>No, <span class="word">'${word}'</span> is not a palindrome!</p>
-    `;
-    }
-  } else if (!wordModified) {
+  if (wordModified === reversed) {
+    return (result.innerHTML = `
+    <p>Yes, <span class="word">'${wordModified}'</span> is a palindrome!</p>
+    `);
+  } else {
+    return (result.innerHTML = `
+    <p>No, <span class="word">'${wordModified}'</span> is not a palindrome!</p>
+    `);
+  }
+
+  wordInput.value = "";
+});
+
+wordInput.addEventListener("keyup", () => {
+  const word = wordInput.value;
+  wordModified = word.replace(/[^A-Za-z0-9]/gi, "");
+
+  if (!wordModified) {
+    checkBtn.classList.remove("active");
+    checkBtn.disabled = true;
     result.innerHTML = `
-    <p>Please <strong>enter</strong> a word!</p>
+    <p>Please enter a valid word!</p>
     `;
+  } else if (wordModified) {
+    checkBtn.classList.add("active");
+    checkBtn.disabled = false;
   }
 });

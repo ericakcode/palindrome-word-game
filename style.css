@@ -90,10 +90,25 @@ label {
   margin: 15px 0 10px 0;
   cursor: pointer;
   box-shadow: var(--box-shadow);
+  transition: all 0.3s ease;
+  opacity: 0.7;
 }
 
 #checkBtn i {
   margin-right: 8px;
+}
+
+#checkBtn:disabled {
+  cursor: not-allowed;
+}
+
+#checkBtn.active {
+  pointer-events: pointer;
+  opacity: 1;
+}
+
+#checkBtn:hover {
+  transform: scale(1.01);
 }
 
 /* Popular Palindromes Section */
