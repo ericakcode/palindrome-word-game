@@ -1,6 +1,6 @@
 const checkBtn = document.getElementById("checkBtn");
 const wordInput = document.getElementById("text");
-const tryBtn = document.querySelector(".tryBtn");
+const tryBtn = document.querySelectorAll(".tryBtn");
 const form = document.querySelector(".form");
 const result = document.querySelector(".result");
 let wordModified;
@@ -41,10 +41,24 @@ wordInput.addEventListener("input", () => {
     checkBtn.classList.remove("active");
     checkBtn.disabled = true;
     result.innerHTML = `
-    <p>Please enter a valid word!</p>
+    <p>Please enter a valid word or number!</p>
     `;
   } else if (wordModified) {
     checkBtn.classList.add("active");
     checkBtn.disabled = false;
   }
+});
+
+// Try Palindromes Suggestion
+
+tryBtn.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    const data = e.target.closest("div");
+    const id = data.dataset.id;
+    console.log(data.innerText);
+    console.log(data, id);
+
+    if (id) {
+    }
+  });
 });
